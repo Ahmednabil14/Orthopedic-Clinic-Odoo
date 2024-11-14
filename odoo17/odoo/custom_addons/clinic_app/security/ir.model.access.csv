@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_patient,access_patient,model_clinic_patient,,1,1,1,1
+access_image,access_image,model_clinic_image,,1,1,1,1
+access_history,access_history,model_clinic_history,,1,1,1,1
+access_wizard,access_wizard,model_clinic_wizard,,1,1,1,1

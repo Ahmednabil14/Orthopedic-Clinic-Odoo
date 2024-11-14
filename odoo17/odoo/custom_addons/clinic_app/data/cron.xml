@@ -1,0 +1,12 @@
+<odoo>
+    <record id="patient_increase_age_cron_job" model="ir.cron">
+        <field name="name">Clinic App: Increase age</field>
+        <field name="model_id" ref="clinic_app.model_clinic_patient"/>
+        <field name="state">code</field>
+        <field name="code">model.increase_age()</field>
+        <field name="interval_number">12</field>
+        <field name="interval_type">months</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="True"/>
+    </record>
+</odoo>

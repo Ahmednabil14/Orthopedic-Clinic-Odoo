@@ -1,0 +1,29 @@
+<odoo>
+    <record id="add_wizard_form_view" model="ir.ui.view">
+        <field name="name">add.wizard.form.view</field>
+        <field name="model">clinic.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="c_o"/>
+                    <field name="o_e"/>
+                    <field name="description"/>
+                    <field name="recommendation"/>
+                    <field name="lab_results"/>
+                </group>
+                <footer>
+                    <button name="action_add_history" type="object" class="btn-primary" string="Confirm"/>
+                    <button class="btn-secondary" string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="add_log_action" model="ir.actions.act_window">
+        <field name="name">Add Description</field>
+        <field name="res_model">clinic.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="clinic_app.add_wizard_form_view"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

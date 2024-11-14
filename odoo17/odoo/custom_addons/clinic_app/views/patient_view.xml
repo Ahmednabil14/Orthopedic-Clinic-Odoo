@@ -1,0 +1,101 @@
+<odoo>
+    <record id="view_clinic_patient_tree" model="ir.ui.view">
+        <field name="name">clinic.patient.tree</field>
+        <field name="model">clinic.patient</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="full_name"/>
+<!--                <field name="birth_date"/>-->
+                <field name="address"/>
+                <field name="phone"/>
+                <field name="gender"/>
+                <field name="age"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_clinic_patient_form" model="ir.ui.view">
+        <field name="name">clinic.patient.form</field>
+        <field name="model">clinic.patient</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="check_action"
+                            type="object"
+                            class="btn btn-danger"
+                            string="Check"
+                    />
+                    <button name="recheck_action"
+                            type="object"
+                            class="btn btn-primary me-5"
+                            string="Recheck"
+                    />
+
+
+                    <button name="action_add_log_wizard"
+                            type="object"
+                            class="btn-warning ms-5"
+                            string="Follow Up"/>
+
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="full_name"/>
+<!--                            <field name="birth_date"/>-->
+                            <field name="address"/>
+                            <field name="phone"/>
+                            <field name="gender"/>
+                            <field name="age"/>
+<!--                            <field name="image_ids" style="width: 400px;">-->
+<!--                                <tree editable="bottom">-->
+<!--                                    <field name="image" widget="image"/>-->
+<!--                                </tree>-->
+<!--                            </field>-->
+                        </group>
+                        <group>
+                            <field name="h_o"/>
+                        </group>
+                    </group>
+                    <notebook class="mt-5">
+                        <page string="History">
+                            <field name="history_ids">
+                                <tree editable="bottom">
+                                    <field name="date"/>
+                                    <field name="c_o" string="C/O"/>
+                                    <field name="o_e" string="O/E"/>
+                                    <field name="description" string="D:"/>
+                                    <field name="recommendation" string="For:"/>
+                                    <field name="lab_results"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page string="Images">
+                            <field name="image_ids" style="width: 100%;">
+                                <tree editable="bottom">
+                                    <field name="image" widget="image" options="{'size': [150, 150], 'clickable': true}"/>
+                                    <field name="date_taken"/>
+                                    <field name="description"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_clinic_patient_action" model="ir.actions.act_window">
+        <field name="name">Patients</field>
+        <field name="res_model">clinic.patient</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_patient_item"
+              name="All Patients"
+              parent="menu_patient_root"
+              action="view_clinic_patient_action"
+    />
+</odoo>
